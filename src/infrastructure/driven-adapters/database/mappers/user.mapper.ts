@@ -1,6 +1,6 @@
 
 
-import { User } from '@domain/model/user.entity';
+import { User } from '@domain/model/user/user.entity';
 import { UserORM } from '../entities/user.entity.orm';
 
 
