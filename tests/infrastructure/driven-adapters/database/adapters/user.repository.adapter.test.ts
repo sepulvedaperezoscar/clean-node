@@ -30,9 +30,6 @@ const mockQueryBuilder = {
     getCount: jest.fn(),
 } as unknown as SelectQueryBuilder<UserORM>;
 
-(AppDataSource.getRepository as jest.Mock).mockReturnValue(mockRepository);
-(mockRepository.createQueryBuilder as jest.Mock).mockReturnValue(mockQueryBuilder);
-
 const mockUserDomain: User = {
     id: '1',
     name: 'Test User',
@@ -69,6 +66,8 @@ describe('UserRepositoryAdapter', () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
+        (AppDataSource.getRepository as jest.Mock).mockReturnValue(mockRepository);
+        (mockRepository.createQueryBuilder as jest.Mock).mockReturnValue(mockQueryBuilder);
         adapter = new UserRepositoryAdapter();
     });
 
