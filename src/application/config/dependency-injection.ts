@@ -59,18 +59,19 @@ class DIContainer {
     }
 
     /**
-     * Limpia todas las dependencias (útil para tests)
+     * Lista todas las dependencias registradas
+     * @returns Array con los nombres de las dependencias
+     */
+    list(): string[] {
+        return Array.from(this.dependencies.keys());
+    }
+
+    /**
+     * Limpia todas las dependencias registradas
      */
     clear(): void {
         this.dependencies.clear();
         this.singletons.clear();
-    }
-
-    /**
-     * Lista todas las dependencias registradas
-     */
-    list(): string[] {
-        return Array.from(this.dependencies.keys());
     }
 }
 

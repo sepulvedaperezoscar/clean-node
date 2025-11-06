@@ -111,7 +111,7 @@ class Server {
         });
 
         // API routes con prefijo
-        this.app.use(config.apiPrefix, routes);
+        this.app.use(config.apiPrefix, routes());
 
         // 404 handler - debe ser después de todas las rutas
         this.app.use(notFoundMiddleware);

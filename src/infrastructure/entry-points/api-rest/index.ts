@@ -5,19 +5,23 @@ import { userRoutes } from './user';
 import { productRoutes } from './product';
 import { healthRoutes } from './health';
 
-const router = Router();
+// Función para configurar todas las rutas
+const configureRoutes = () => {
+    const router = Router();
 
+    // Health check routes (sin prefijo /api/v1)
+    // Accesible desde: /health, /health/ready, /health/live
+    router.use(healthRoutes);
 
-// Health check routes (sin prefijo /api/v1)
-// Accesible desde: /health, /health/ready, /health/live
-router.use(healthRoutes);
+    // User routes
+    // Accesible desde: /api/v1/users
+    router.use(userRoutes());
 
-// User routes
-// Accesible desde: /api/v1/users
-router.use(userRoutes);
+    // Product routes
+    // Accesible desde: /api/v1/products
+    router.use(productRoutes());
 
-// Product routes
-// Accesible desde: /api/v1/products
-router.use(productRoutes);
+    return router;
+};
 
-export default router;
+export default configureRoutes;
