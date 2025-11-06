@@ -21,7 +21,7 @@ module.exports = {
         es2022: true,
         jest: true,
     },
-    ignorePatterns: ['dist', 'node_modules', '*.config.js', '.eslintrc.js'],
+    ignorePatterns: ['dist', 'node_modules', '*.config.js', '.eslintrc.js', 'tsconfig*.json'],
     overrides: [
         {
             files: ["tests/**/*.ts"],
