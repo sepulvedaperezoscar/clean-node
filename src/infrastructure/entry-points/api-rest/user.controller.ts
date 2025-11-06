@@ -8,8 +8,7 @@ import {
     UpdateUserUseCase,
     DeleteUserUseCase,
 } from '@domain/usecase/user';
-import { Logger } from '@infrastructure/helpers';
-import { ResponseFormatter } from '@infrastructure/helpers';
+import { Logger, ResponseFormatter } from '@infrastructure/helpers';
 
 export class UserController {
     private logger: Logger;
