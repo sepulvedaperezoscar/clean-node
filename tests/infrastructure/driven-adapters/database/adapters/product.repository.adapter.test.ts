@@ -13,7 +13,7 @@ import { AppDataSource } from '@application/config/datasource';
 
 
 jest.mock('@application/config/datasource');
-jest.mock('@infrastructure/driven-adapters/database/mappers/product.mapper');
+jest.mock('@infrastructure/driven-adapters/database/product/product.mapper');
 
 const mockRepository = {
     findOne: jest.fn(),

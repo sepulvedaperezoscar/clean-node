@@ -2,9 +2,9 @@
 
 import { Repository, SelectQueryBuilder, DeleteResult } from 'typeorm';
 
-import { UserORM } from '@infrastructure/driven-adapters/database/user/user.entity.orm';
-import { UserMapper } from '@infrastructure/driven-adapters/database/user/user.mapper';
-import { UserRepositoryAdapter } from '@infrastructure/driven-adapters/database/user/user.repository.adapter';
+import { UserORM } from '@infrastructure/driven-adapters/database/user';
+import { UserMapper } from '@infrastructure/driven-adapters/database/user';
+import { UserRepositoryAdapter } from '@infrastructure/driven-adapters/database/user';
 
 import { User } from '@domain/model/user/user.entity';
 import { FindUsersFilters } from '@domain/model/user/user.repository';
@@ -14,7 +14,7 @@ import { AppDataSource } from '@application/config/datasource';
 
 // Mockea las dependencias que el setup.ts no gestiona globalmente
 jest.mock('@application/config/datasource');
-jest.mock('@infrastructure/driven-adapters/database/mappers/user.mapper');
+jest.mock('@infrastructure/driven-adapters/database/user/user.mapper');
 
 const mockRepository = {
     findOne: jest.fn(),
