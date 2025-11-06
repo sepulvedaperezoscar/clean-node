@@ -2,7 +2,7 @@
 
 
 import { Request, Response, NextFunction } from 'express';
-import { UserController } from '@infrastructure/entry-points/api-rest/user.controller';
+import { UserController } from '@infrastructure/entry-points/api-rest';
 import {
     CreateUserUseCase,
     GetUserUseCase,
