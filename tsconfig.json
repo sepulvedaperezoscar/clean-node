@@ -27,15 +27,16 @@
             "@application/*": [
                 "application/*"
             ]
-        }
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
     },
     "include": [
         "src/**/*",
-        "tests/**/*.ts"
+        "tests/**/*",
     ],
     "exclude": [
         "node_modules",
         "dist",
-        "tests"
     ]
 }

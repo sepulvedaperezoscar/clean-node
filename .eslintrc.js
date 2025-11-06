@@ -19,6 +19,7 @@ module.exports = {
     env: {
         node: true,
         es2022: true,
+        jest: true,
     },
-    ignorePatterns: ['dist', 'node_modules', '*.config.js', '.eslintrc.js', 'tests/setup.ts'],
+    ignorePatterns: ['dist', 'node_modules', '*.config.js'],
 };

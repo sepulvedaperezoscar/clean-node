@@ -18,34 +18,34 @@ import { UserORM } from './user.entity.orm';
 @Index(['userId'])
 export class ProductORM {
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id!: string;
 
     @Column({ type: 'varchar', length: 255 })
-    name: string;
+    name!: string;
 
     @Column({ type: 'text' })
-    description: string;
+    description!: string;
 
     @Column({ type: 'decimal', precision: 10, scale: 2 })
-    price: number;
+    price!: number;
 
     @Column({ type: 'integer', default: 0 })
-    stock: number;
+    stock!: number;
 
     @Column({ type: 'varchar', length: 100 })
-    category: string;
+    category!: string;
 
     @Column({ name: 'user_id', type: 'uuid' })
-    userId: string;
+    userId!: string;
 
     @CreateDateColumn({ name: 'created_at' })
-    createdAt: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn({ name: 'updated_at' })
-    updatedAt: Date;
+    updatedAt!: Date;
 
     // Relación con usuario
     @ManyToOne(() => UserORM, user => user.products, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'user_id' })
-    user: UserORM;
+    user!: UserORM;
 }
