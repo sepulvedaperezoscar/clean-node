@@ -20,5 +20,5 @@ module.exports = {
         node: true,
         es2022: true,
     },
-    ignorePatterns: ['dist', 'node_modules', '*.config.js'],
+    ignorePatterns: ['dist', 'node_modules', '*.config.js', '.eslintrc.js', 'tests/setup.ts'],
 };
