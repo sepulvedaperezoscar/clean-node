@@ -1,6 +1,6 @@
 
 
-import { CreateUserUseCase, CreateUserCommand } from '@domain/usecase/user/create-user.usecase'; // Ajusta la ruta
+import { CreateUserUseCase, CreateUserCommand } from '@domain/usecase/user/create-user.usecase';
 import { UserRepository } from '@domain/model/user/user.repository';
 import { User, UserEntity } from '@domain/model/user/user.entity';
 

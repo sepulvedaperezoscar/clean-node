@@ -1,7 +1,7 @@
 
 
 
-import { UpdateUserUseCase, UpdateUserCommand } from '@domain/usecase/user/update-user.usecase'; // Ajusta la ruta
+import { UpdateUserUseCase, UpdateUserCommand } from '@domain/usecase/user/update-user.usecase';
 import { UserRepository } from '@domain/model/user/user.repository';
 import { User, UserEntity, UserRole } from '@domain/model/user/user.entity';
 import * as bcrypt from 'bcrypt';

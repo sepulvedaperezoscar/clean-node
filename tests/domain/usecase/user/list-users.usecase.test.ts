@@ -1,6 +1,6 @@
 
 
-import { ListUsersUseCase } from '@domain/usecase/user/list-users.usecase'; // Ajusta la ruta
+import { ListUsersUseCase } from '@domain/usecase/user/list-users.usecase';
 import { UserRepository, FindUsersFilters } from '@domain/model/user/user.repository';
 import { User, UserEntity, UserRole } from '@domain/model/user/user.entity';
 

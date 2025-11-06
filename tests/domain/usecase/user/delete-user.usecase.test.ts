@@ -1,11 +1,12 @@
 
 
-import { GetUserUseCase } from '@domain/usecase/user/get-user.usecase';
-import { UserRepository } from '@domain/model/user/user.repository';
-import { User, UserEntity, UserRole } from '@domain/model/user/user.entity';
 
-describe('GetUserUseCase', () => {
-    let useCase: GetUserUseCase;
+import { DeleteUserUseCase } from '@domain/usecase/user/delete-user.usecase';
+import { UserRepository } from '@domain/model/user/user.repository';
+import { User } from '@domain/model/user/user.entity';
+
+describe('DeleteUserUseCase', () => {
+    let useCase: DeleteUserUseCase;
     let userRepository: UserRepository;
 
     const mockUserId = '123';
@@ -21,42 +22,29 @@ describe('GetUserUseCase', () => {
         updatedAt: new Date(),
     };
 
-    const mockUserPublic = {
-        id: mockUserId,
-        name: 'John Doe',
-        email: 'john@example.com',
-        role: 'user' as UserRole,
-        isActive: true,
-        createdAt: mockUserDomain.createdAt,
-        updatedAt: mockUserDomain.updatedAt,
-    };
-
     beforeEach(() => {
         jest.clearAllMocks();
 
         userRepository = {
             findById: jest.fn().mockResolvedValue(mockUserDomain), // Por defecto, encuentra el usuario
+            delete: jest.fn().mockResolvedValue(undefined), // Por defecto, la eliminación es exitosa
             findByEmail: jest.fn(),
             save: jest.fn(),
             findAll: jest.fn(),
             update: jest.fn(),
-            delete: jest.fn(),
             count: jest.fn(),
         };
 
-        jest.spyOn(UserEntity.prototype, 'toPublic').mockReturnValue(mockUserPublic);
-
-        useCase = new GetUserUseCase(userRepository);
+        useCase = new DeleteUserUseCase(userRepository);
     });
 
-    it('should return the user public data if found', async () => {
-        const result = await useCase.execute(mockUserId);
+    it('should delete a user successfully when found', async () => {
+
+        await expect(useCase.execute(mockUserId)).resolves.toBeUndefined();
 
         expect(userRepository.findById).toHaveBeenCalledWith(mockUserId);
 
-        expect(result).toEqual(mockUserPublic);
-        expect(result).not.toHaveProperty('password');
-
+        expect(userRepository.delete).toHaveBeenCalledWith(mockUserId);
     });
 
     it('should throw an error if the user is not found', async () => {
@@ -65,14 +53,22 @@ describe('GetUserUseCase', () => {
 
         await expect(useCase.execute('999')).rejects.toThrow('User not found');
 
-        expect(UserEntity.prototype.toPublic).not.toHaveBeenCalled();
+        expect(userRepository.delete).not.toHaveBeenCalled();
     });
 
-    it('should handle repository errors gracefully', async () => {
+    it('should handle repository errors during the initial findById', async () => {
         const mockError = new Error('Database connection failed');
         (userRepository.findById as jest.Mock).mockRejectedValue(mockError);
 
         await expect(useCase.execute(mockUserId)).rejects.toThrow('Database connection failed');
-        expect(UserEntity.prototype.toPublic).not.toHaveBeenCalled();
+        expect(userRepository.delete).not.toHaveBeenCalled();
+    });
+
+    it('should handle repository errors during the delete operation', async () => {
+        const mockError = new Error('Permission denied to delete');
+        (userRepository.delete as jest.Mock).mockRejectedValue(mockError);
+
+        await expect(useCase.execute(mockUserId)).rejects.toThrow('Permission denied to delete');
+        expect(userRepository.findById).toHaveBeenCalledWith(mockUserId);
     });
 });
