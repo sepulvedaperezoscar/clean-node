@@ -89,6 +89,15 @@ describe('UserRepositoryAdapter', () => {
             const result = await adapter.findById('99');
             expect(result).toBeNull();
         });
+
+        it('should handle repository findOne throwing an unexpected error', async () => {
+            const mockError = new Error('Network failure');
+            (mockRepository.findOne as jest.Mock).mockRejectedValue(mockError);
+
+            await expect(adapter.findById('1')).rejects.toThrow('Failed to find user: Error: Network failure');
+            expect(console.error).toHaveBeenCalled(); // Verifica que el error fue logueado
+        });
+
     });
 
     describe('findByEmail', () => {
@@ -96,6 +105,13 @@ describe('UserRepositoryAdapter', () => {
             mockRepository.findOne = jest.fn().mockResolvedValue(mockUserORM);
             const result = await adapter.findByEmail('test@example.com');
             expect(result).toEqual(mockUserDomain);
+        });
+
+        it('should handle repository findOne throwing an unexpected error by email', async () => {
+            const mockError = new Error('DB connection lost');
+            (mockRepository.findOne as jest.Mock).mockRejectedValue(mockError);
+
+            await expect(adapter.findByEmail('test@example.com')).rejects.toThrow('Failed to find user: Error: DB connection lost');
         });
     });
 
@@ -112,6 +128,34 @@ describe('UserRepositoryAdapter', () => {
             await adapter.findAll(filters);
             expect(mockQueryBuilder.andWhere).toHaveBeenCalledWith('user.role = :role', { role: 'admin' });
         });
+
+        it('should apply both role and isActive filters simultaneously', async () => {
+            (mockQueryBuilder.getMany as jest.Mock).mockResolvedValue([mockUserORM]);
+            const filters: FindUsersFilters = { role: 'user', isActive: true };
+
+            await adapter.findAll(filters);
+
+            expect(mockQueryBuilder.andWhere).toHaveBeenCalledWith('user.role = :role', { role: 'user' });
+            expect(mockQueryBuilder.andWhere).toHaveBeenCalledWith('user.isActive = :isActive', { isActive: true });
+            expect(mockQueryBuilder.andWhere).toHaveBeenCalledTimes(2);
+        });
+
+        it('should return an empty array if no users match filters', async () => {
+            (mockQueryBuilder.getMany as jest.Mock).mockResolvedValue([]); // Devuelve array vacío
+            (UserMapper.toDomainList as jest.Mock).mockReturnValue([]);
+
+            const filters: FindUsersFilters = { role: undefined };
+            const result = await adapter.findAll(filters);
+
+            expect(result).toEqual([]);
+        });
+
+        it('should handle database errors during findAll', async () => {
+            const mockError = new Error('Timeout error');
+            (mockQueryBuilder.getMany as jest.Mock).mockRejectedValue(mockError);
+
+            await expect(adapter.findAll()).rejects.toThrow('Failed to find users: Error: Timeout error');
+        });
     });
 
     describe('save', () => {
@@ -126,6 +170,21 @@ describe('UserRepositoryAdapter', () => {
             mockError.code = '23505';
             mockRepository.save = jest.fn().mockRejectedValue(mockError);
             await expect(adapter.save(mockUserDomain)).rejects.toThrow('Email already exists');
+        });
+
+        it('should handle generic database errors not related to unique constraints', async () => {
+            const mockError = new Error('Connection pool exhausted');
+            (mockRepository.save as jest.Mock).mockRejectedValue(mockError);
+
+            await expect(adapter.save(mockUserDomain)).rejects.toThrow('Failed to save user: Connection pool exhausted');
+        });
+
+        it('should verify UserMapper.toDomain is called with the saved ORM entity', async () => {
+            (mockRepository.save as jest.Mock).mockResolvedValue(mockUserORM);
+
+            await adapter.save(mockUserDomain);
+
+            expect(UserMapper.toDomain).toHaveBeenCalledWith(mockUserORM);
         });
     });
 
