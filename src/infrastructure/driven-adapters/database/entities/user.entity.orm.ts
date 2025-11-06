@@ -7,6 +7,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
 } from 'typeorm';
+import { ProductORM } from './product.entity.orm';
 
 
 @Entity('users')
@@ -34,5 +35,9 @@ export class UserORM {
 
     @UpdateDateColumn({ name: 'updated_at' })
     updatedAt: Date;
+
+    // Relación con productos
+    @OneToMany(() => ProductORM, product => product.user)
+    products: ProductORM[];
 
 }

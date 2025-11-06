@@ -36,6 +36,9 @@ export class UserMapper {
         return ormEntities.map(entity => this.toDomain(entity));
     }
 
+    /**
+     * Actualiza una entidad ORM con datos del dominio
+     */
     static updateORM(ormEntity: UserORM, domainData: Partial<User>): UserORM {
         if (domainData.name !== undefined) ormEntity.name = domainData.name;
         if (domainData.email !== undefined) ormEntity.email = domainData.email;
