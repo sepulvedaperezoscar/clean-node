@@ -1,17 +1,23 @@
 
 
 import { Router } from 'express';
-import userRoutes from './user/user.routes';
-import productRoutes from './product/product.routes';
-import healthRoutes from './health/health.routes';
+import { userRoutes } from './user';
+import { productRoutes } from './product';
+import { healthRoutes } from './health';
 
 const router = Router();
 
-// Health check routes
+
+// Health check routes (sin prefijo /api/v1)
+// Accesible desde: /health, /health/ready, /health/live
 router.use(healthRoutes);
 
-// API routes
+// User routes
+// Accesible desde: /api/v1/users
 router.use(userRoutes);
+
+// Product routes
+// Accesible desde: /api/v1/products
 router.use(productRoutes);
 
 export default router;

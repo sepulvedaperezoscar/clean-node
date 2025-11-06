@@ -5,6 +5,7 @@
         "lib": [
             "ES2022"
         ],
+        "rootDir": ".",
         "outDir": "./dist",
         "strict": true,
         "esModuleInterop": true,
@@ -15,20 +16,24 @@
         "declarationMap": true,
         "sourceMap": true,
         "moduleResolution": "node",
-        "baseUrl": "./",
+        "baseUrl": "./src",
         "paths": {
             "@domain/*": [
-                "src/domain/*"
+                "domain/*"
             ],
             "@infrastructure/*": [
-                "src/infrastructure/*"
+                "infrastructure/*"
             ],
             "@application/*": [
-                "src/application/*"
+                "application/*"
+            ],
+            "@/*": [
+                "*"
             ]
         },
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "noEmit": false
     },
     "include": [
         "src/**/*",

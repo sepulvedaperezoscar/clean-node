@@ -24,12 +24,6 @@ module.exports = {
     ignorePatterns: ['dist', 'node_modules', '*.config.js', '.eslintrc.js'],
     overrides: [
         {
-            files: ["src/**/*.ts", "src/**/*.tsx"],
-            parserOptions: {
-                project: ['./tsconfig.json'],
-            },
-        },
-        {
             files: ["tests/**/*.ts"],
             parserOptions: {
                 project: ['./tsconfig.test.json'],
