@@ -3,7 +3,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2022,
         sourceType: 'module',
-        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
     },
     plugins: ['@typescript-eslint'],
     extends: [
@@ -21,5 +21,22 @@ module.exports = {
         es2022: true,
         jest: true,
     },
-    ignorePatterns: ['dist', 'node_modules', '*.config.js'],
+    ignorePatterns: ['dist', 'node_modules', '*.config.js', '.eslintrc.js'],
+    overrides: [
+        {
+            files: ["src/**/*.ts", "src/**/*.tsx"],
+            parserOptions: {
+                project: ['./tsconfig.json'],
+            },
+        },
+        {
+            files: ["tests/**/*.ts"],
+            parserOptions: {
+                project: ['./tsconfig.test.json'],
+            },
+            env: {
+                jest: true,
+            },
+        }
+    ],
 };
