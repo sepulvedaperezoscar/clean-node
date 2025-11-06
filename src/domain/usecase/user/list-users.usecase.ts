@@ -1,7 +1,7 @@
 
 
-import { UserRepository, FindUsersFilters } from '@domain/model/user/user.repository';
-import { User, UserEntity } from '@domain/model/user/user.entity';
+import { UserRepository, FindUsersFilters } from '@domain/model';
+import { User, UserEntity } from '@domain/model';
 
 /**
  * Caso de uso: Listar Usuarios

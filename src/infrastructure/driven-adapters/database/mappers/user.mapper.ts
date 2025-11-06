@@ -1,7 +1,7 @@
 
 
-import { User } from '@domain/model/user/user.entity';
-import { UserORM } from '../entities/user.entity.orm';
+import { User } from '@domain/model';
+import { UserORM } from '../entities';
 
 
 export class UserMapper {

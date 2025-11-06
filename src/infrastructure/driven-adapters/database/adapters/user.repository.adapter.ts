@@ -2,8 +2,8 @@
 
 import { Repository } from 'typeorm';
 
-import { UserRepository, FindUsersFilters } from '@domain/model/user/user.repository';
-import { User } from '@domain/model/user/user.entity';
+import { UserRepository, FindUsersFilters } from '@domain/model';
+import { User } from '@domain/model';
 
 import { AppDataSource } from '@application/config/datasource';
 

@@ -1,6 +1,6 @@
 
 
-import { UserRepository } from '@domain/model/user/user.repository';
+import { UserRepository } from '@domain/model';
 
 /**
  * Caso de uso: Eliminar Usuario

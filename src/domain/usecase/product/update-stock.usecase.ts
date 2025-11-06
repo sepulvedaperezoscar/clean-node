@@ -1,6 +1,6 @@
 
-import { ProductRepository } from '@domain/model/product/product.repository';
-import { Product, ProductEntity } from '@domain/model/product/product.entity';
+import { ProductRepository } from '@domain/model';
+import { Product, ProductEntity } from '@domain/model';
 
 /**
  * Caso de uso: Actualizar Stock de Producto

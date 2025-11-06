@@ -2,8 +2,8 @@
 
 import { Repository } from 'typeorm';
 
-import { ProductRepository, FindProductsFilters } from '@domain/model/product/product.repository';
-import { Product } from '@domain/model/product/product.entity';
+import { ProductRepository, FindProductsFilters } from '@domain/model';
+import { Product } from '@domain/model';
 
 import { AppDataSource } from '@application/config/datasource';
 

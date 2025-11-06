@@ -1,7 +1,7 @@
 
 
 import { AppDataSource } from './datasource';
-import { Logger } from '@infrastructure/helpers/logger';
+import { Logger } from '@infrastructure/helpers';
 
 const logger = new Logger('Database');
 

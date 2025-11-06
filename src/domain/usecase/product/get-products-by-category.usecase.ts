@@ -1,7 +1,7 @@
 
 
-import { ProductRepository } from '@domain/model/product/product.repository';
-import { Product } from '@domain/model/product/product.entity';
+import { ProductRepository } from '@domain/model';
+import { Product } from '@domain/model';
 
 /**
  * Caso de uso: Obtener Productos por Categoría

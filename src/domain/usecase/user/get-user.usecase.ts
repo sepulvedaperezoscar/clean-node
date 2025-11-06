@@ -1,7 +1,7 @@
 
 
-import { UserRepository } from '@domain/model/user/user.repository';
-import { User, UserEntity } from '@domain/model/user/user.entity';
+import { UserRepository } from '@domain/model';
+import { User, UserEntity } from '@domain/model';
 
 /**
  * Caso de uso: Obtener Usuario por ID
