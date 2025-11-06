@@ -10,7 +10,7 @@ import {
     JoinColumn,
     Index,
 } from 'typeorm';
-import { UserORM } from './user.entity.orm';
+import { UserORM } from '../user/user.entity.orm';
 
 
 @Entity('products')

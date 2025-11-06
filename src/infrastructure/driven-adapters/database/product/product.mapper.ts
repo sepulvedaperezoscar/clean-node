@@ -1,7 +1,7 @@
 
 
-import { Product } from '@domain/model';
-import { ProductORM } from '../entities';
+import { Product } from '@domain/model/product';
+import { ProductORM } from '../product';
 
 
 export class ProductMapper {

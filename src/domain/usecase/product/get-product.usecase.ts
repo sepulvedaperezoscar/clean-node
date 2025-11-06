@@ -1,6 +1,6 @@
 
-import { ProductRepository } from '@domain/model';
-import { Product } from '@domain/model';
+import { ProductRepository } from '@domain/model/product';
+import { Product } from '@domain/model/product';
 
 /**
  * Caso de uso: Obtener Producto por ID

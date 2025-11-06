@@ -2,12 +2,12 @@
 
 import { Repository, SelectQueryBuilder, DeleteResult } from 'typeorm';
 
-import { ProductRepositoryAdapter } from '@infrastructure/driven-adapters/database/adapters//product.repository.adapter';
-import { ProductMapper } from '@infrastructure/driven-adapters/database/mappers/product.mapper';
-import { ProductORM } from '@infrastructure/driven-adapters/database/entities/product.entity.orm';
+import { ProductRepositoryAdapter } from '@infrastructure/driven-adapters/database/product';
+import { ProductMapper } from '@infrastructure/driven-adapters/database/product';
+import { ProductORM } from '@infrastructure/driven-adapters/database/product';
 
-import { Product } from '@domain/model/product/product.entity';
-import { FindProductsFilters } from '@domain/model/product/product.repository';
+import { Product } from '@domain/model/product';
+import { FindProductsFilters } from '@domain/model/product';
 
 import { AppDataSource } from '@application/config/datasource';
 

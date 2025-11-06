@@ -1,7 +1,7 @@
 
-import { ProductRepository } from '@domain/model';
-import { Product, ProductEntity } from '@domain/model';
-import { UserRepository } from '@domain/model';
+import { ProductRepository } from '@domain/model/product';
+import { Product, ProductEntity } from '@domain/model/product';
+import { UserRepository } from '@domain/model/user';
 
 export interface CreateProductCommand {
     name: string;

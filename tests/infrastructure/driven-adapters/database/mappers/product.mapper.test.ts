@@ -1,6 +1,6 @@
 
 
-import { ProductMapper } from '@infrastructure/driven-adapters/database/mappers/product.mapper';
+import { ProductMapper } from '@infrastructure/driven-adapters/database/product/product.mapper';
 import { ProductORM } from '@infrastructure/driven-adapters/database/entities/product.entity.orm';
 
 import { Product } from '@domain/model/product/product.entity';

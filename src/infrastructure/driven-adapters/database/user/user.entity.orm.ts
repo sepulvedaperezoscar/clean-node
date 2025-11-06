@@ -8,7 +8,7 @@ import {
     UpdateDateColumn,
     OneToMany
 } from 'typeorm';
-import { ProductORM } from './product.entity.orm';
+import { ProductORM } from '../product';
 
 
 @Entity('users')

@@ -2,9 +2,9 @@
 
 import { Repository, SelectQueryBuilder, DeleteResult } from 'typeorm';
 
-import { UserORM } from '@infrastructure/driven-adapters/database/entities/user.entity.orm';
-import { UserMapper } from '@infrastructure/driven-adapters/database/mappers/user.mapper';
-import { UserRepositoryAdapter } from '@infrastructure/driven-adapters/database/adapters/user.repository.adapter';
+import { UserORM } from '@infrastructure/driven-adapters/database/user/user.entity.orm';
+import { UserMapper } from '@infrastructure/driven-adapters/database/user/user.mapper';
+import { UserRepositoryAdapter } from '@infrastructure/driven-adapters/database/user/user.repository.adapter';
 
 import { User } from '@domain/model/user/user.entity';
 import { FindUsersFilters } from '@domain/model/user/user.repository';

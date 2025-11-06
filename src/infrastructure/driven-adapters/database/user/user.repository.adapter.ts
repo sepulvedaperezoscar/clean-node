@@ -2,13 +2,13 @@
 
 import { Repository } from 'typeorm';
 
-import { UserRepository, FindUsersFilters } from '@domain/model';
-import { User } from '@domain/model';
+import { UserRepository, FindUsersFilters } from '@domain/model/user';
+import { User } from '@domain/model/user';
 
 import { AppDataSource } from '@application/config/datasource';
 
-import { UserORM } from '../entities/user.entity.orm';
-import { UserMapper } from '../mappers/user.mapper';
+import { UserORM } from './user.entity.orm';
+import { UserMapper } from './user.mapper';
 
 
 export class UserRepositoryAdapter implements UserRepository {

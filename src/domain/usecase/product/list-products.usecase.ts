@@ -1,7 +1,7 @@
 
 
-import { ProductRepository, FindProductsFilters } from '@domain/model';
-import { Product } from '@domain/model';
+import { ProductRepository, FindProductsFilters } from '@domain/model/product';
+import { Product } from '@domain/model/product';
 
 /**
  * Caso de uso: Listar Productos

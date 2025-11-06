@@ -2,7 +2,7 @@
 
 
 import { Request, Response, NextFunction } from 'express';
-import { ProductController } from '@infrastructure/entry-points/api-rest';
+import { ProductController } from '@infrastructure/entry-points/api-rest/product';
 import {
     CreateProductUseCase,
     GetProductUseCase,

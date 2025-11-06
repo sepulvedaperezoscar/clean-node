@@ -2,13 +2,13 @@
 
 import { Repository } from 'typeorm';
 
-import { ProductRepository, FindProductsFilters } from '@domain/model';
-import { Product } from '@domain/model';
+import { ProductRepository, FindProductsFilters } from '@domain/model/product';
+import { Product } from '@domain/model/product';
 
 import { AppDataSource } from '@application/config/datasource';
 
-import { ProductORM } from '../entities/product.entity.orm';
-import { ProductMapper } from '../mappers/product.mapper';
+import { ProductORM } from './product.entity.orm';
+import { ProductMapper } from './product.mapper';
 
 
 export class ProductRepositoryAdapter implements ProductRepository {

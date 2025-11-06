@@ -1,8 +1,8 @@
 
 
 
-import { UserMapper } from '@infrastructure/driven-adapters/database/mappers/user.mapper';
-import { UserORM } from '@infrastructure/driven-adapters/database/entities/user.entity.orm';
+import { UserMapper } from '@infrastructure/driven-adapters/database/user/user.mapper';
+import { UserORM } from '@infrastructure/driven-adapters/database/user/user.entity.orm';
 
 import { User } from '@domain/model/user/user.entity';
 
