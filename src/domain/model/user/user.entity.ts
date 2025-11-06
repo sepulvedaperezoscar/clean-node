@@ -1,11 +1,12 @@
 
+export type UserRole = 'admin' | 'user';
 
 export interface User {
     id: string;
     name: string;
     email: string;
     password: string;
-    role: 'admin' | 'user';
+    role: UserRole;
     isActive: boolean;
     createdAt: Date;
     updatedAt: Date;
@@ -17,7 +18,7 @@ export class UserEntity implements User {
         public name: string,
         public email: string,
         public password: string,
-        public role: 'admin' | 'user',
+        public role: UserRole,
         public isActive: boolean,
         public createdAt: Date,
         public updatedAt: Date
