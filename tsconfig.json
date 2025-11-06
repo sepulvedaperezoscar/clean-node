@@ -6,7 +6,6 @@
             "ES2022"
         ],
         "outDir": "./dist",
-        "rootDir": "./src",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
@@ -16,16 +15,16 @@
         "declarationMap": true,
         "sourceMap": true,
         "moduleResolution": "node",
-        "baseUrl": "./src",
+        "baseUrl": "./",
         "paths": {
             "@domain/*": [
-                "domain/*"
+                "src/domain/*"
             ],
             "@infrastructure/*": [
-                "infrastructure/*"
+                "src/infrastructure/*"
             ],
             "@application/*": [
-                "application/*"
+                "src/application/*"
             ]
         },
         "experimentalDecorators": true,
@@ -33,10 +32,10 @@
     },
     "include": [
         "src/**/*",
+        "tests/**/*"
     ],
     "exclude": [
         "node_modules",
         "dist",
-        "tests/**/*"
     ]
 }
